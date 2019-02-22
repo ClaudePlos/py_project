@@ -12,8 +12,8 @@ canv = Canvas(window, width=canvSize, height=canvSize)
 canv.pack()
 
 #text
-text = canv.create_text(200, 280, text='I\'m an alien')
-
+text1 = canv.create_text(200, 280, text='I\'m an alien')
+text2 = canv.create_text(200, 350, text='Check kays: A, Z, up, down, left, righy, left button mouse')
 
 #drow the alien
 tors = canv.create_oval(100, 150, 300, 250, fill='green') # x, y w, h -
@@ -25,6 +25,27 @@ hat = canv.create_polygon(180, 75, 220, 75, 200, 20, fill='purple')
 canv.update()
 
 #events
+def open_mouth():
+    canv.itemconfig(mouth, outline='red', fill='black')
+def close_mouth():
+    canv.itemconfig(mouth, fill='red')
+
+#event mouse
+i = 0
+def sneezing(event):
+    global i
+    check = int(i)%int(2)
+    print(check)
+    if check == 0:
+        open_mouth()
+        canv.itemconfig(text1, text='Achoo')
+    else:
+        close_mouth()
+        canv.itemconfig(text1, text='Ok')
+    i+=1
+canv.bind_all('<Button-1>', sneezing)
+
+#events key
 def close_the_eye(event):
     canv.itemconfig(eye, fill='green')
     canv.itemconfig(pupil, state=HIDDEN)
