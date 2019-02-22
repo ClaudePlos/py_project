@@ -1,10 +1,10 @@
 #autor klaudiusz.skowronski claude-plos@o2.pl
-#title:use the colors 
+#title:use the colors
 #add 2017.02.22
 from tkinter import *
-from random import * 
+from random import *
 
-canvSize = 500
+canvSize = 1000
 window = Tk()
 
 canv = Canvas(window, width=canvSize, height=canvSize)
