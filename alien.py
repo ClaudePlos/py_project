@@ -11,7 +11,11 @@ window.title('Alien');
 canv = Canvas(window, width=canvSize, height=canvSize)
 canv.pack()
 
+#text
+text = canv.create_text(200, 280, text='I\'m an alien')
 
+
+#drow the alien
 tors = canv.create_oval(100, 150, 300, 250, fill='green') # x, y w, h -
 eye = canv.create_oval(170, 70, 230, 130, fill='white') #
 pupil = canv.create_oval(190, 90, 210, 110, fill='black') #zrenica
@@ -20,6 +24,7 @@ neck = canv.create_line(200, 150, 200, 130, fill='black')
 hat = canv.create_polygon(180, 75, 220, 75, 200, 20, fill='purple')
 canv.update()
 
+#events
 def close_the_eye(event):
     canv.itemconfig(eye, fill='green')
     canv.itemconfig(pupil, state=HIDDEN)
