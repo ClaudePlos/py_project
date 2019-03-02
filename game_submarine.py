@@ -93,17 +93,36 @@ def incident():
             delete_boubble(boubble)
     return point
 
+#
+c.create_text(50, 30, text='Time: ', fill='white')
+c.create_text(150, 30, text='Score: ', fill='white')
+text_time  = c.create_text(50, 50, fill='white')
+text_score = c.create_text(150, 50, fill='white')
+def show_score(score):
+    c.itemconfig(text_score, text=str(wynik))
+def show_time(time_to_end):
+    c.itemconfig(text_time, text=str(time_to_end))
 
-boubble_RANDOM = 10
+
+BOUBBLE_RANDOM = 10
+TIME_LIMIT = 30
+ADD_TIME_POINT = 1000
 score = 0
+additional_time = 0
+end = time() - TIME_LIMIT
 #main loop of the game
-while True:
-    if randint(1, boubble_RANDOM) == 1:
+while time() < end:
+    if randint(1, BOUBBLE_RANDOM) == 1:
         create_boubble()
     run_boubble()
     delete_boubbles()
     score += incident()
-    print(score)
+    if (int(score / ADD_TIME_POINT)) > additional_time:
+        additional_time += 1
+        end += TIME_LIMIT
+    show_score(score)
+    show_time(int(end - time()))
+    #print(score)
     window.update()
     sleep(0.01)
 
