@@ -99,7 +99,7 @@ c.create_text(150, 30, text='Score: ', fill='white')
 text_time  = c.create_text(50, 50, fill='white')
 text_score = c.create_text(150, 50, fill='white')
 def show_score(score):
-    c.itemconfig(text_score, text=str(wynik))
+    c.itemconfig(text_score, text=str(score))
 def show_time(time_to_end):
     c.itemconfig(text_time, text=str(time_to_end))
 
@@ -109,9 +109,9 @@ TIME_LIMIT = 30
 ADD_TIME_POINT = 1000
 score = 0
 additional_time = 0
-end = time() - TIME_LIMIT
+endGame = time() + TIME_LIMIT
 #main loop of the game
-while time() < end:
+while time() < endGame:
     if randint(1, BOUBBLE_RANDOM) == 1:
         create_boubble()
     run_boubble()
@@ -121,9 +121,18 @@ while time() < end:
         additional_time += 1
         end += TIME_LIMIT
     show_score(score)
-    show_time(int(end - time()))
+    show_time(int(endGame - time()))
     #print(score)
     window.update()
     sleep(0.01)
+
+
+c.create_text(center_x, center_y, \
+    text="Game Over", fill='white', font=('Helvetica', 30))
+c.create_text(center_x, center_y+30, \
+    text="Score: " + str(score), fill='white')
+c.create_text(center_x, center_y+45, \
+    text="Extra time: " + str(additional_time*TIME_LIMIT), fill='white')    
+
 
 input("Press enter to exit ;)")
