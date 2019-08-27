@@ -119,7 +119,7 @@ while time() < endGame:
     score += incident()
     if (int(score / ADD_TIME_POINT)) > additional_time:
         additional_time += 1
-        end += TIME_LIMIT
+        endGame += TIME_LIMIT
     show_score(score)
     show_time(int(endGame - time()))
     #print(score)
@@ -132,7 +132,7 @@ c.create_text(center_x, center_y, \
 c.create_text(center_x, center_y+30, \
     text="Score: " + str(score), fill='white')
 c.create_text(center_x, center_y+45, \
-    text="Extra time: " + str(additional_time*TIME_LIMIT), fill='white')    
+    text="Extra time: " + str(additional_time*TIME_LIMIT), fill='white')
 
 
 input("Press enter to exit ;)")
